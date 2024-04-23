@@ -1,12 +1,16 @@
-const userService = require('./user.service')
-const passwordService = require('./password.service')
+const userService = require('./user.service');
+const passwordService = require('./password.service');
+const tokenService = require('./token.service');
 
-exports.register = (req, res) => {
-    const {email, password} = req.body;
-    const hashedPassword = passwordService.hashedPassword(password);
-    const user = userService.create({email, password: hashedPassword});
+exports.register = async (username, password) => {
+  const hashedPassword = await passwordService.hash(password);
+  return await userService.create({ username, password: hashedPassword });
 };
 
-exports.login = (req, res) => {
-    const {email, password} = req.body;
+exports.login = async user => {
+  try {
+    return tokenService.generate(user);
+  } catch (error) {
+    throw error;
+  }
 };

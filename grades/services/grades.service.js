@@ -1,7 +1,7 @@
-exports.assign = ({ userId, courseId, grade }) => {};
+exports.assign = ({ studentId, courseId, grade }) => {};
 
-exports.findUserGrades = (userId) => {};
+exports.findUserGrades = (studentId) => {};
 
 exports.findCourseGrades = (courseId) => {};
 
-exports.update = ({ userId, courseId, grade }) => {};
+exports.update = ({ studentId, courseId, grade }) => {};

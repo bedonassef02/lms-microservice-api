@@ -1,0 +1,38 @@
+version: "3"
+services:
+
+  auth:
+    build:
+      context: ./auth
+    ports:
+      - "3001:3001"
+
+  courses:
+    build:
+      context: ./courses
+    ports:
+      - "3002:3002"
+
+  enrollment:
+    build:
+      context: ./enrollment
+    ports:
+      - "3003:3003"
+
+  grades:
+    build:
+      context: ./grades
+    ports:
+      - "3004:3004"
+
+
+  gateway:
+    build:
+      context: ./gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - auth
+      - courses
+      - enrollment
+      - grades

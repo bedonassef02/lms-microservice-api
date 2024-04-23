@@ -1,5 +1,5 @@
-exports.enroll = ({ userId, courseId }) => {};
+exports.enroll = ({ studentId, courseId }) => {};
 
-exports.findAll = ({ userId }) => {};
+exports.findAll = ({ studentId }) => {};
 
-exports.remove = ({ userId, courseId }) => {};
+exports.remove = ({ studentId, courseId }) => {};

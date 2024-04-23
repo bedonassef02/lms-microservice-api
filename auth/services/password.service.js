@@ -1,7 +1,9 @@
-exports.hash = (password)=>{
+const bcrypt = require('bcrypt');
 
-}
+exports.hash = async password => {
+  return bcrypt.hash(password, 10);
+};
 
-exports.compare = (password, hashedPassword)=>{
-
-}
+exports.compare = async (password, hashedPassword) => {
+  return bcrypt.compare(password, hashedPassword);
+};
