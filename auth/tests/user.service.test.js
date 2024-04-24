@@ -3,6 +3,7 @@ const userService = require('../src/services/user.service');
 describe('User Service', () => {
   // Generate a unique username for each test run
   const testUsername = `testuser_${Date.now()}`;
+  let id = 0;
 
   // Test for create function
   describe('create', () => {
@@ -11,6 +12,7 @@ describe('User Service', () => {
         username: testUsername,
         password: 'testpassword',
       });
+      id = newUser.id;
       expect(newUser).toHaveProperty('id');
       expect(newUser.username).toBe(testUsername);
     });
@@ -34,9 +36,9 @@ describe('User Service', () => {
   describe('findById', () => {
     it('should find a user by id', async () => {
       // Assuming there is a user with id 1 in the database
-      const user = await userService.findById(1);
+      const user = await userService.findById(id);
       expect(user).toBeDefined();
-      expect(user.id).toBe(1);
+      expect(user.id).toBe(id);
     });
 
     it('should return null if user not found', async () => {

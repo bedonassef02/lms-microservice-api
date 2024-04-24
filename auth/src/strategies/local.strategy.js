@@ -11,11 +11,15 @@ passport.use(
     try {
       const user = await userService.findOne(username);
       if (!user) {
-        return done(null, false, { message: 'Incorrect username or password.' });
+        return done(null, false, {
+          message: 'Incorrect username or password.',
+        });
       }
       const isMatch = await passwordService.compare(password, user.password);
       if (!isMatch) {
-        return done(null, false, { message: 'Incorrect username or password.' });
+        return done(null, false, {
+          message: 'Incorrect username or password.',
+        });
       }
       return done(null, user);
     } catch (error) {

@@ -1,6 +1,6 @@
 // auth.service.test.js
 
-const authService = require('../src/services/auth.service')
+const authService = require('../src/services/auth.service');
 const userService = require('../src/services/user.service');
 const passwordService = require('../src/services/password.service');
 const tokenService = require('../src/services/token.service');
@@ -11,12 +11,12 @@ jest.mock('../src/services/password.service');
 jest.mock('../src/services/token.service');
 
 describe('Auth Service', () => {
- beforeEach(() => {
+  beforeEach(() => {
     // Clear all mocks before each test
     jest.clearAllMocks();
- });
+  });
 
- it('should register a user', async () => {
+  it('should register a user', async () => {
     // Arrange
     const username = 'testUser';
     const password = 'testPassword';
@@ -31,11 +31,14 @@ describe('Auth Service', () => {
 
     // Assert
     expect(passwordService.hash).toHaveBeenCalledWith(password);
-    expect(userService.create).toHaveBeenCalledWith({ username, password: hashedPassword });
+    expect(userService.create).toHaveBeenCalledWith({
+      username,
+      password: hashedPassword,
+    });
     expect(result).toEqual(user);
- });
+  });
 
- it('should login a user', async () => {
+  it('should login a user', async () => {
     // Arrange
     const user = { id: 1, username: 'testUser', password: 'hashedPassword' };
     const token = 'testToken';
@@ -48,9 +51,9 @@ describe('Auth Service', () => {
     // Assert
     expect(tokenService.generate).toHaveBeenCalledWith(user);
     expect(result).toEqual(token);
- });
+  });
 
- it('should throw an error during login', async () => {
+  it('should throw an error during login', async () => {
     // Arrange
     const user = { id: 1, username: 'testUser', password: 'hashedPassword' };
     const error = new Error('Failed to generate token');
@@ -59,5 +62,5 @@ describe('Auth Service', () => {
 
     // Act and Assert
     await expect(authService.login(user)).rejects.toThrow(error);
- });
+  });
 });

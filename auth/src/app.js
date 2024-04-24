@@ -13,11 +13,11 @@ app.use(cookieParser());
 
 // Session
 app.use(
- session({
+  session({
     secret: 'your_secret_key',
     resave: false,
     saveUninitialized: false,
- })
+  })
 );
 
 // Passport

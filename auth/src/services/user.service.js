@@ -17,3 +17,7 @@ exports.findOne = async username => {
 exports.findById = async id => {
   return await prisma.user.findUnique({ where: { id } });
 };
+
+exports.remoevAll = async () => {
+  return await prisma.user.deleteMany();
+};
