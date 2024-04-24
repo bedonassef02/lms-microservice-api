@@ -16,7 +16,6 @@ describe('Auth Routes', () => {
   });
 
   it('should register a new user', async () => {
-
     const res = await request(app).post('/auth/register').send(userData);
 
     expect(res.status).toBe(200);

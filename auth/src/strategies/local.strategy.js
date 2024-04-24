@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 const userService = require('../services/user.service');
 const passwordService = require('../services/password.service');
 
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+
 passport.use(
   new LocalStrategy(async function (username, password, done) {
     try {
@@ -32,7 +34,7 @@ passport.use(
   new JwtStrategy(
     {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'your_jwt_secret',
+      secretOrKey: JWT_SECRET_KEY,
     },
     async function (jwt_payload, done) {
       try {
