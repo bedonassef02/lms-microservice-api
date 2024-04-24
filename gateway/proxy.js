@@ -6,17 +6,17 @@ const proxy = httpProxy.createProxyServer({});
 const URL = `http://localhost`;
 
 module.exports = (req, res) => {
- morgan('dev')(req, res, () => {});
+  morgan('dev')(req, res, () => {});
 
- const authUrl = `${URL}:3001`;
- const coursesUrl = `${URL}:3002`;
+  const authUrl = `${URL}:3001`;
+  const coursesUrl = `${URL}:3002`;
 
- let targetUrl;
- if (req.url.startsWith('/auth')) {
+  let targetUrl;
+  if (req.url.startsWith('/auth')) {
     targetUrl = authUrl;
- } else {
+  } else {
     targetUrl = coursesUrl;
- }
+  }
 
- proxy.web(req, res, { target: targetUrl });
+  proxy.web(req, res, { target: targetUrl });
 };

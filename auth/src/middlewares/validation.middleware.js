@@ -7,7 +7,7 @@ const validationMiddleware = (req, res, next) => {
     const extractedErrors = errors
       .array()
       .map(error => ({ [error.path]: error.msg }));
-    return res.status(422).json({ errors: extractedErrors });
+    return res.status(400).json({ errors: extractedErrors });
   }
   next();
 };
