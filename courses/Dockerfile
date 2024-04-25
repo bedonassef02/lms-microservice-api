@@ -13,11 +13,8 @@ RUN npm install
 # Copy the rest of the application files to the working directory
 COPY . .
 
-# Generate Prisma client based on the schema
-RUN npx prisma generate
-
 # Expose the port on which the application will run
-EXPOSE 3001
+EXPOSE 3002
 
 # Command to start the application
 CMD ["npm", "start"]

@@ -13,15 +13,6 @@ exports.findOne = async ({ userId, courseId }) => {
   });
 };
 
-exports.remove = async ({ courseId, userId }) => {
-  return Enrollment.destroy({
-    where: {
-      courseId,
-      userId,
-    },
-  });
-};
-
 exports.findAll = async ({ userId }) => {
   return Enrollment.findAll({
     where: {

@@ -1,0 +1,6 @@
+version: "3"
+services:
+  courses:
+    build: .
+    ports:
+      - "3002:3002"
