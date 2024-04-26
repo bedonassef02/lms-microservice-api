@@ -2,9 +2,9 @@
   "name": "gateway",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon src/server.js",
     "format": "prettier --write \"**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0",
+    "helmet": "^7.1.0",
     "http": "^0.0.1-security",
     "http-proxy": "^1.18.1",
     "morgan": "^1.10.0"
